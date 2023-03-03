@@ -16,3 +16,4 @@ app.set('views', 'src/views')
 app.listen(3000,()=>{
     console.log('app listening on http://localhost:3000')
 })
+
