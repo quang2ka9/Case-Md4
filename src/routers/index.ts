@@ -1,7 +1,11 @@
-import {Router} from 'express';
-import {userRouter} from "./userRouter";
-export const routers = Router()
-routers.get('/',userRouter);
-routers.get('/home',);
+import {Router} from "express";
+import loginRouter from "./loginRouter";
+import registerRouter from "./registerRouter";
+
+const router = Router();
+
+router.use('/', loginRouter);
+router.use('/register', registerRouter);
 
 
+export default router;

@@ -1,30 +1,12 @@
 import {Schema, model} from "mongoose";
-
-interface IUser {
-
-    name: string;
-
+interface IUser{
     email: string;
-
     password: string;
-
 }
-
-
-
-const userSchema = new Schema<IUser>({
-
-    name: String,
-
+const userSchema = new  Schema<IUser>({
     email: String,
-
     password: String
 })
+const UserModel = model<IUser>('User', userSchema);
 
-
-
-const User = model<IUser>('Product', userSchema);
-
-
-
-export { User };
+export {UserModel};
