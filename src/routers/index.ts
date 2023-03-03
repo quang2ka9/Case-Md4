@@ -1,7 +1,7 @@
 import {Router} from 'express';
-
+import {userRouter} from "./userRouter";
 export const routers = Router()
+routers.get('/',userRouter);
 routers.get('/home',);
-routers.get('/list',);
-routers.get('/create',);
+
 
