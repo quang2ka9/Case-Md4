@@ -1,1 +1,0 @@
-{"version":3,"file":"transactionSchema.js","sourceRoot":"","sources":["../../../src/schemas/transactionSchema.ts"],"names":[],"mappings":";;;AAAA,uCAAuC;AAavC,MAAM,iBAAiB,GAAG,IAAI,iBAAM,CAAe;IAE/C,IAAI,EAAE,MAAM;IAEZ,KAAK,EAAE,MAAM;CAChB,CAAC,CAAA;AAQO,8CAAiB;AAJ1B,MAAM,OAAO,GAAG,IAAA,gBAAK,EAAe,SAAS,EAAE,iBAAiB,CAAC,CAAC"}

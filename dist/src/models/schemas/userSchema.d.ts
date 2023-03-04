@@ -24,11 +24,11 @@
 /// <reference types="mongoose" />
 /// <reference types="mongoose/types/inferschematype" />
 interface IUser {
-    name: string;
-    email: string;
+    username: string;
     password: string;
+    role: string;
 }
-declare const User: import("mongoose").Model<IUser, {}, {}, {}, import("mongoose").Document<unknown, {}, IUser> & Omit<IUser & {
+declare const UserModel: import("mongoose").Model<IUser, {}, {}, {}, import("mongoose").Document<unknown, {}, IUser> & Omit<IUser & {
     _id: import("mongoose").Types.ObjectId;
 }, never>, any>;
-export { User };
+export { UserModel };
