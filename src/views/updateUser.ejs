@@ -1,0 +1,139 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <!-- Change the width below to just wider than your form's width
+    to optimize its initial scale on Apple iOS  and Android devices -->
+    <meta name="viewport" content="width=640">
+
+    <title>bay.org</title>
+
+</head>
+
+<style>
+    .user-profile {
+        width: 400px;
+        margin: 0 auto;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+        padding: 2em;
+        position: absolute;
+        top: 20%;
+        left: 35%;
+        z-index: 1;
+
+    }
+
+    .user-header {
+        background-color: #136051;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .user-header img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin-right: 20px;
+    }
+
+    .user-title h2 {
+        margin: 0;
+    }
+
+    .user-details {
+        padding: 20px;
+    }
+
+    h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    tr {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    td {
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+    }
+
+    i {
+        margin-right: 10px;
+    }
+</style>
+<body>
+<div class="user-profile">
+    <div class="user-header">
+        <form action="/updateUser" method="post">
+            <h1>Edit Information </h1>
+
+            <tr>
+                <td align="right" class="formLabel"> Username: <span class="req asterisk"></span></td>
+                <td align="left"><input type="text" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0"
+                                        size="25" value="username">
+                    <div class="error"></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right" class="formLabel">Password:</td>
+                <td align="left"><input type="text" name="MERGE1" id="MERGE1" size="25" value="password">
+                    <div class="error"></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right" class="formLabel">Age:</td>
+                <td align="left"><input type="text" name="MERGE2" id="MERGE2" size="25" value="age">
+                    <div class="error"></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right" class="formLabel">Address:</td>
+                <td align="left"><input type="text" name="MERGE3" id="MERGE3" size="25" value="address">
+                    <div class="error"></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right" class="formLabel">Gender:</td>
+                <td align="left"><input type="text" name="MERGE4" id="MERGE4" size="25" value="Gender">
+                    <div class="error"></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right" class="formLabel">Phone:</td>
+                <td align="left"><input type="text" name="MERGE5" id="MERGE5" size="25" value="phone">
+                    <div class="error"></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right" class="formLabel">Role:</td>
+                <td align="left"><input type="text" name="MERGE6" id="MERGE6" size="25" value="role">
+                    <div class="error"></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right"></td>
+                <td align="left">
+                    <input type="submit" class="button" name="submit" value="Update"/>
+
+            </tr>
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+
+</html>

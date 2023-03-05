@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+
+    body {
+        background: #f2f4f8;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        height: 100vh;
+        font-family: "Open Sans";
+    }
+
+    .education {
+        --bg-color: #ffd861;
+        --bg-color-light: #ffeeba;
+        --text-color-hover: #4C5656;
+        --box-shadow-color: rgba(255, 215, 97, 0.48);
+    }
+
+    .credentialing {
+        --bg-color: #B8F9D3;
+        --bg-color-light: #e2fced;
+        --text-color-hover: #4C5656;
+        --box-shadow-color: rgba(184, 249, 211, 0.48);
+    }
+
+    .wallet {
+        --bg-color: #CEB2FC;
+        --bg-color-light: #F0E7FF;
+        --text-color-hover: #fff;
+        --box-shadow-color: rgba(206, 178, 252, 0.48);
+    }
+
+    .human-resources {
+        --bg-color: #DCE9FF;
+        --bg-color-light: #f1f7ff;
+        --text-color-hover: #4C5656;
+        --box-shadow-color: rgba(220, 233, 255, 0.48);
+    }
+
+    .card {
+        width: 220px;
+        height: 321px;
+        background: #fff;
+        border-top-right-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        box-shadow: 0 14px 26px rgba(0,0,0,0.04);
+        transition: all 0.3s ease-out;
+        text-decoration: none;
+    }
+
+    .card:hover {
+        transform: translateY(-5px) scale(1.005) translateZ(0);
+        box-shadow: 0 24px 36px rgba(0,0,0,0.11),
+        0 24px 46px var(--box-shadow-color);
+    }
+
+    .card:hover .overlay {
+        transform: scale(4) translateZ(0);
+    }
+
+    .card:hover .circle {
+        border-color: var(--bg-color-light);
+        background: var(--bg-color);
+    }
+
+    .card:hover .circle:after {
+        background: var(--bg-color-light);
+    }
+
+    .card:hover p {
+        color: var(--text-color-hover);
+    }
+
+    .card:active {
+        transform: scale(1) translateZ(0);
+        box-shadow: 0 15px 24px rgba(0,0,0,0.11),
+        0 15px 24px var(--box-shadow-color);
+    }
+
+    .card p {
+        font-size: 17px;
+        color: #4C5656;
+        margin-top: 30px;
+        z-index: 1000;
+        transition: color 0.3s ease-out;
+    }
+
+    .circle {
+        width: 131px;
+        height: 131px;
+        border-radius: 50%;
+        background: #fff;
+        border: 2px solid var(--bg-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+        transition: all 0.3s ease-out;
+    }
+
+    .circle:after {
+        content: "";
+        width: 118px;
+        height: 118px;
+        display: block;
+        position: absolute;
+        background: var(--bg-color);
+        border-radius: 50%;
+        top: 7px;
+        left: 7px;
+        transition: opacity 0.3s ease-out;
+    }
+
+    .circle svg {
+        z-index: 10000;
+        transform: translateZ(0);
+    }
+
+    .overlay {
+        width: 118px;
+        position: absolute;
+        height: 118px;
+        border-radius: 50%;
+        background: var(--bg-color);
+        top: 70px;
+        left: 50px;
+        z-index: 0;
+        transition: transform 0.3s ease-out;
+    }
+
+
+
+
+
+
+
+    .logoutButton {
+        --figure-duration: 100ms;
+        --transform-figure: none;
+        --walking-duration: 100ms;
+        --transform-arm1: none;
+        --transform-wrist1: none;
+        --transform-arm2: none;
+        --transform-wrist2: none;
+        --transform-leg1: none;
+        --transform-calf1: none;
+        --transform-leg2: none;
+        --transform-calf2: none;
+        background: none;
+        border: 0;
+        color: #f4f7ff;
+        cursor: pointer;
+        display: block;
+        font-family: "Quicksand", sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        height: 40px;
+        outline: none;
+        padding: 0 0 0 20px;
+        perspective: 100px;
+        position: relative;
+        text-align: left;
+        width: 130px;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .logoutButton::before {
+        background-color: #1f2335;
+        border-radius: 5px;
+        content: "";
+        display: block;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        transform: none;
+        transition: transform 50ms ease;
+        width: 100%;
+        z-index: 2;
+    }
+    .logoutButton:hover .door {
+        transform: rotateY(20deg);
+    }
+    .logoutButton:active::before {
+        transform: scale(0.96);
+    }
+    .logoutButton:active .door {
+        transform: rotateY(28deg);
+    }
+    .logoutButton.clicked::before {
+        transform: none;
+    }
+    .logoutButton.clicked .door {
+        transform: rotateY(35deg);
+    }
+    .logoutButton.door-slammed .door {
+        transform: none;
+        transition: transform 100ms ease-in 250ms;
+    }
+    .logoutButton.falling {
+        animation: shake 200ms linear;
+    }
+    .logoutButton.falling .bang {
+        animation: flash 300ms linear;
+    }
+    .logoutButton.falling .figure {
+        animation: spin 1000ms infinite linear;
+        bottom: -1080px;
+        opacity: 0;
+        right: 1px;
+        transition: transform calc(var(--figure-duration) * 1ms) linear, bottom calc(var(--figure-duration) * 1ms) cubic-bezier(0.7, 0.1, 1, 1) 100ms, opacity calc(var(--figure-duration) * 0.25ms) linear calc(var(--figure-duration) * 0.75ms);
+        z-index: 1;
+    }
+    .logoutButton--light::before {
+        background-color: #f4f7ff;
+    }
+    .logoutButton--light .button-text {
+        color: #1f2335;
+    }
+    .logoutButton--light .door,
+    .logoutButton--light .doorway {
+        fill: #1f2335;
+    }
+
+    .button-text {
+        color: #f4f7ff;
+        font-weight: 500;
+        position: relative;
+        z-index: 10;
+    }
+
+    svg {
+        display: block;
+        position: absolute;
+    }
+
+    .figure {
+        bottom: 5px;
+        fill: #4371f7;
+        right: 18px;
+        transform: var(--transform-figure);
+        transition: transform calc(var(--figure-duration) * 1ms) cubic-bezier(0.2, 0.1, 0.8, 0.9);
+        width: 30px;
+        z-index: 4;
+    }
+
+    .door,
+    .doorway {
+        bottom: 4px;
+        fill: #f4f7ff;
+        right: 12px;
+        width: 32px;
+    }
+
+    .door {
+        transform: rotateY(20deg);
+        transform-origin: 100% 50%;
+        transform-style: preserve-3d;
+        transition: transform 200ms ease;
+        z-index: 5;
+    }
+    .door path {
+        fill: #4371f7;
+        stroke: #4371f7;
+        stroke-width: 4;
+    }
+
+    .doorway {
+        z-index: 3;
+    }
+
+    .bang {
+        opacity: 0;
+    }
+
+    .arm1, .wrist1, .arm2, .wrist2, .leg1, .calf1, .leg2, .calf2 {
+        transition: transform calc(var(--walking-duration) * 1ms) ease-in-out;
+    }
+
+    .arm1 {
+        transform: var(--transform-arm1);
+        transform-origin: 52% 45%;
+    }
+
+    .wrist1 {
+        transform: var(--transform-wrist1);
+        transform-origin: 59% 55%;
+    }
+
+    .arm2 {
+        transform: var(--transform-arm2);
+        transform-origin: 47% 43%;
+    }
+
+    .wrist2 {
+        transform: var(--transform-wrist2);
+        transform-origin: 35% 47%;
+    }
+
+    .leg1 {
+        transform: var(--transform-leg1);
+        transform-origin: 47% 64.5%;
+    }
+
+    .calf1 {
+        transform: var(--transform-calf1);
+        transform-origin: 55.5% 71.5%;
+    }
+
+    .leg2 {
+        transform: var(--transform-leg2);
+        transform-origin: 43% 63%;
+    }
+
+    .calf2 {
+        transform: var(--transform-calf2);
+        transform-origin: 41.5% 73%;
+    }
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg) scale(0.94);
+        }
+        to {
+            transform: rotate(359deg) scale(0.94);
+        }
+    }
+    @keyframes shake {
+        0% {
+            transform: rotate(-1deg);
+        }
+        50% {
+            transform: rotate(2deg);
+        }
+        100% {
+            transform: rotate(-1deg);
+        }
+    }
+    @keyframes flash {
+        0% {
+            opacity: 0.4;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+
+
+
+
+
+
+    /*html,*/
+    /*body {*/
+    /*  height: 100%;*/
+    /*}*/
+
+    /*body {*/
+    /*  align-items: center;*/
+    /*  background: #f4f7ff;*/
+    /*  display: flex;*/
+    /*  justify-content: center;*/
+    /*  overflow: hidden;*/
+    /*  -webkit-font-smoothing: antialiased;*/
+    /*}*/
+    /*body .background {*/
+    /*  align-items: center;*/
+    /*  display: flex;*/
+    /*  height: 100%;*/
+    /*  justify-content: center;*/
+    /*  width: 50%;*/
+    /*}*/
+    /*body .background--light {*/
+    /*  background: #f4f7ff;*/
+    /*}*/
+
+    /*body button {*/
+    /*  margin: 20px;*/
+    /*}*/
+
+</style>
+<body>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+<a href="#" class="card education">
+    <div class="overlay"></div>
+    <div class="circle">
+
+        <svg width="71px" height="76px" viewBox="29 14 71 76" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+            <desc>Created with Sketch.</desc>
+            <defs></defs>
+            <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(30.000000, 14.000000)">
+                <g id="Group-8" fill="#D98A19">
+                    <g id="Group-7">
+                        <g id="Group-6">
+                            <path d="M0,0 L0,75.9204805 L69.1511499,75.9204805 L0,0 Z M14.0563973,32.2825679 L42.9457663,63.9991501 L14.2315268,63.9991501 L14.0563973,32.2825679 Z" id="Fill-1"></path>
+                        </g>
+                    </g>
+                </g>
+                <g id="Group-20" transform="translate(0.000000, 14.114286)" stroke="#FFFFFF" stroke-linecap="square">
+                    <path d="M0.419998734,54.9642857 L4.70316223,54.9642857" id="Line"></path>
+                    <path d="M0.419998734,50.4404762 L4.70316223,50.4404762" id="Line"></path>
+                    <path d="M0.419998734,45.9166667 L4.70316223,45.9166667" id="Line"></path>
+                    <path d="M0.419998734,41.3928571 L2.93999114,41.3928571" id="Line"></path>
+                    <path d="M0.419998734,36.8690476 L4.70316223,36.8690476" id="Line"></path>
+                    <path d="M0.419998734,32.3452381 L4.70316223,32.3452381" id="Line"></path>
+                    <path d="M0.419998734,27.8214286 L4.70316223,27.8214286" id="Line"></path>
+                    <path d="M0.419998734,23.297619 L2.93999114,23.297619" id="Line"></path>
+                    <path d="M0.419998734,18.7738095 L4.70316223,18.7738095" id="Line"></path>
+                    <path d="M0.419998734,14.25 L4.70316223,14.25" id="Line"></path>
+                    <path d="M0.419998734,9.72619048 L4.70316223,9.72619048" id="Line"></path>
+                    <path d="M0.419998734,5.20238095 L2.93999114,5.20238095" id="Line"></path>
+                    <path d="M0.419998734,0.678571429 L4.70316223,0.678571429" id="Line"></path>
+                </g>
+            </g>
+        </svg>
+    </div>
+    <p>Education</p>
+</a>
+
+
+
+
+
+
+<a href="#" class="card credentialing">
+    <div class="overlay"></div>
+    <div class="circle">
+
+        <svg width="64px" height="72px" viewBox="27 21 64 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+            <desc>Created with Sketch.</desc>
+            <defs>
+                <polygon id="path-1" points="60.9784821 18.4748913 60.9784821 0.0299638385 0.538377293 0.0299638385 0.538377293 18.4748913"></polygon>
+            </defs>
+            <g id="Group-12" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(27.000000, 21.000000)">
+                <g id="Group-5">
+                    <g id="Group-3" transform="translate(2.262327, 21.615176)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Clip-2"></g>
+                        <path d="M7.17774177,18.4748913 L54.3387782,18.4748913 C57.9910226,18.4748913 60.9789911,15.7266455 60.9789911,12.3681986 L60.9789911,6.13665655 C60.9789911,2.77820965 57.9910226,0.0299638385 54.3387782,0.0299638385 L7.17774177,0.0299638385 C3.52634582,0.0299638385 0.538377293,2.77820965 0.538377293,6.13665655 L0.538377293,12.3681986 C0.538377293,15.7266455 3.52634582,18.4748913 7.17774177,18.4748913" id="Fill-1" fill="#59A785" mask="url(#mask-2)"></path>
+                    </g>
+                    <polygon id="Fill-4" fill="#FFFFFF" transform="translate(31.785111, 30.877531) rotate(-2.000000) translate(-31.785111, -30.877531) " points="62.0618351 55.9613216 7.2111488 60.3692832 1.50838775 5.79374073 56.3582257 1.38577917"></polygon>
+                    <ellipse id="Oval-3" fill="#25D48A" opacity="0.216243004" cx="30.0584472" cy="21.7657707" rx="9.95169733" ry="9.17325562"></ellipse>
+                    <g id="Group-4" transform="translate(16.959615, 6.479082)" fill="#54C796">
+                        <polygon id="Fill-6" points="10.7955395 21.7823628 0.11873799 11.3001058 4.25482787 7.73131106 11.0226557 14.3753897 27.414824 1.77635684e-15 31.3261391 3.77891399"></polygon>
+                    </g>
+                    <path d="M4.82347935,67.4368303 L61.2182039,67.4368303 C62.3304205,67.4368303 63.2407243,66.5995595 63.2407243,65.5765753 L63.2407243,31.3865871 C63.2407243,30.3636029 62.3304205,29.5263321 61.2182039,29.5263321 L4.82347935,29.5263321 C3.71126278,29.5263321 2.80095891,30.3636029 2.80095891,31.3865871 L2.80095891,65.5765753 C2.80095891,66.5995595 3.71126278,67.4368303 4.82347935,67.4368303" id="Fill-8" fill="#59B08B"></path>
+                    <path d="M33.3338063,67.4368303 L61.2181191,67.4368303 C62.3303356,67.4368303 63.2406395,66.5995595 63.2406395,65.5765753 L63.2406395,31.3865871 C63.2406395,30.3636029 62.3303356,29.5263321 61.2181191,29.5263321 L33.3338063,29.5263321 C32.2215897,29.5263321 31.3112859,30.3636029 31.3112859,31.3865871 L31.3112859,65.5765753 C31.3112859,66.5995595 32.2215897,67.4368303 33.3338063,67.4368303" id="Fill-10" fill="#4FC391"></path>
+                    <path d="M29.4284029,33.2640869 C29.4284029,34.2202068 30.2712569,34.9954393 31.3107768,34.9954393 C32.3502968,34.9954393 33.1931508,34.2202068 33.1931508,33.2640869 C33.1931508,32.3079669 32.3502968,31.5327345 31.3107768,31.5327345 C30.2712569,31.5327345 29.4284029,32.3079669 29.4284029,33.2640869" id="Fill-15" fill="#FEFEFE"></path>
+                    <path d="M8.45417501,71.5549073 L57.5876779,71.5549073 C60.6969637,71.5549073 63.2412334,69.2147627 63.2412334,66.3549328 L63.2412334,66.3549328 C63.2412334,63.4951029 60.6969637,61.1549584 57.5876779,61.1549584 L8.45417501,61.1549584 C5.34488919,61.1549584 2.80061956,63.4951029 2.80061956,66.3549328 L2.80061956,66.3549328 C2.80061956,69.2147627 5.34488919,71.5549073 8.45417501,71.5549073" id="Fill-12" fill="#5BD6A2"></path>
+                </g>
+            </g>
+        </svg>
+
+    </div>
+    <p>Credentialing</p>
+</a>
+
+
+
+
+<a href="/waller" class="card wallet">
+    <div class="overlay"></div>
+    <div class="circle">
+
+
+        <svg width="78px" height="60px" viewBox="23 29 78 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+            <desc>Created with Sketch.</desc>
+            <defs></defs>
+            <g id="icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(23.000000, 29.500000)">
+                <rect id="Rectangle-3" fill="#AC8BE9" x="67.8357511" y="26.0333433" width="9.40495664" height="21.8788565" rx="4.70247832"></rect>
+                <rect id="Rectangle-3" fill="#6A5297" x="67.8357511" y="38.776399" width="9.40495664" height="10.962961" rx="4.70247832"></rect>
+                <polygon id="Rectangle-2" fill="#6A5297" points="57.3086772 0 67.1649301 26.3776902 14.4413177 45.0699507 4.58506484 18.6922605"></polygon>
+                <path d="M0,19.6104296 C0,16.2921718 2.68622235,13.6021923 5.99495032,13.6021923 L67.6438591,13.6021923 C70.9547788,13.6021923 73.6388095,16.2865506 73.6388095,19.6104296 L73.6388095,52.6639057 C73.6388095,55.9821635 70.9525871,58.672143 67.6438591,58.672143 L5.99495032,58.672143 C2.68403068,58.672143 0,55.9877847 0,52.6639057 L0,19.6104296 Z" id="Rectangle" fill="#8B6FC0"></path>
+                <path d="M47.5173769,27.0835169 C45.0052827,24.5377699 40.9347162,24.5377699 38.422622,27.0835169 L36.9065677,28.6198808 L35.3905134,27.0835169 C32.8799903,24.5377699 28.8078527,24.5377699 26.2957585,27.0835169 C23.7852354,29.6292639 23.7852354,33.7559532 26.2957585,36.3001081 L36.9065677,47.0530632 L47.5173769,36.3001081 C50.029471,33.7559532 50.029471,29.6292639 47.5173769,27.0835169" id="Fill-12" fill="#F6F1FF"></path>
+                <rect id="Rectangle-4" fill="#AC8BE9" x="58.0305835" y="26.1162588" width="15.6082259" height="12.863158"></rect>
+                <ellipse id="Oval" fill="#FFFFFF" cx="65.8346965" cy="33.0919007" rx="2.20116007" ry="2.23319575"></ellipse>
+            </g>
+        </svg>
+
+    </div>
+    <p>Wallet</p>
+
+</a>
+
+
+
+
+
+
+<a href="/information" class="card human-resources">
+    <div class="overlay"></div>
+    <div class="circle">
+
+
+        <svg width="66px" height="77px" viewBox="1855 26 66 77" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+            <desc>Created with Sketch.</desc>
+            <defs></defs>
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(1855.000000, 26.000000)">
+                <path d="M4.28872448,42.7464904 C4.28872448,39.3309774 5.4159227,33.7621426 6.40576697,30.4912557 C10.5920767,32.1098991 14.3021264,35.1207513 18.69596,35.1207513 C30.993618,35.1207513 42.5761396,28.7162991 49.9992251,17.9014817 C56.8027248,23.8881252 60.8188351,33.0463165 60.8188351,42.7464904 C60.8188351,60.817447 47.6104607,76.6693426 32.5537798,76.6693426 C17.4970989,76.6693426 4.28872448,60.817447 4.28872448,42.7464904" id="Fill-8" fill="#AFCEFF"></path>
+                <path d="M64.3368879,31.1832696 L62.8424171,46.6027478 L60.6432609,46.7824348 L59.8340669,34.6791304 L47.6573402,25.3339478 C44.2906753,34.068487 34.3459503,40.2903304 24.4684093,40.2903304 C17.7559812,40.2903304 10.046244,37.4168 5.80469412,32.8004522 L5.80469412,34.6791304 L5.80469412,46.6027478 L4.28932167,46.6027478 L1.30187314,27.8802435 C1.30187314,20.9790957 3.52342407,15.5432 7.27229127,11.3578087 C13.132229,4.79558261 21.8124018,0.0492173913 30.5672235,0.342852174 C37.4603019,0.569286957 42.6678084,2.72991304 50.8299179,0.342852174 C51.4629405,1.44434783 51.8615656,3.00455652 51.5868577,5.22507826 C51.4629405,6.88316522 51.2106273,7.52302609 50.8299179,8.45067826 C58.685967,14.1977391 64.3368879,20.7073739 64.3368879,31.1832696" id="Fill-10" fill="#3B6CB7"></path>
+                <path d="M58.9405197,54.5582052 C62.0742801,54.8270052 65.3603242,52.60064 65.6350321,49.5386574 C65.772386,48.009127 65.2617876,46.5570226 64.3182257,45.4584487 C63.3761567,44.3613357 62.0205329,43.6162922 60.4529062,43.4818922 L58.9405197,54.5582052 Z" id="Fill-13" fill="#568ADC"></path>
+                <path d="M6.32350389,54.675367 C3.18227865,54.8492104 0.484467804,52.4957496 0.306803449,49.4264626 C0.217224782,47.8925496 0.775598471,46.4579757 1.75200594,45.3886191 C2.7284134,44.3192626 4.10792487,43.6165843 5.67853749,43.530393 L6.32350389,54.675367 Z" id="Fill-15" fill="#568ADC"></path>
+            </g>
+        </svg>
+
+    </div>
+    <p>Human Resources</p>
+</a>
+
+
+<div class="background background--light">
+    <button class="logoutButton logoutButton--dark">
+        <svg class="doorway" viewBox="0 0 100 100">
+            <path d="M93.4 86.3H58.6c-1.9 0-3.4-1.5-3.4-3.4V17.1c0-1.9 1.5-3.4 3.4-3.4h34.8c1.9 0 3.4 1.5 3.4 3.4v65.8c0 1.9-1.5 3.4-3.4 3.4z" />
+            <path class="bang" d="M40.5 43.7L26.6 31.4l-2.5 6.7zM41.9 50.4l-19.5-4-1.4 6.3zM40 57.4l-17.7 3.9 3.9 5.7z" />
+        </svg>
+        <svg class="figure" viewBox="0 0 100 100">
+            <circle cx="52.1" cy="32.4" r="6.4" />
+            <path d="M50.7 62.8c-1.2 2.5-3.6 5-7.2 4-3.2-.9-4.9-3.5-4-7.8.7-3.4 3.1-13.8 4.1-15.8 1.7-3.4 1.6-4.6 7-3.7 4.3.7 4.6 2.5 4.3 5.4-.4 3.7-2.8 15.1-4.2 17.9z" />
+            <g class="arm1">
+                <path d="M55.5 56.5l-6-9.5c-1-1.5-.6-3.5.9-4.4 1.5-1 3.7-1.1 4.6.4l6.1 10c1 1.5.3 3.5-1.1 4.4-1.5.9-3.5.5-4.5-.9z" />
+                <path class="wrist1" d="M69.4 59.9L58.1 58c-1.7-.3-2.9-1.9-2.6-3.7.3-1.7 1.9-2.9 3.7-2.6l11.4 1.9c1.7.3 2.9 1.9 2.6 3.7-.4 1.7-2 2.9-3.8 2.6z" />
+            </g>
+            <g class="arm2">
+                <path d="M34.2 43.6L45 40.3c1.7-.6 3.5.3 4 2 .6 1.7-.3 4-2 4.5l-10.8 2.8c-1.7.6-3.5-.3-4-2-.6-1.6.3-3.4 2-4z" />
+                <path class="wrist2" d="M27.1 56.2L32 45.7c.7-1.6 2.6-2.3 4.2-1.6 1.6.7 2.3 2.6 1.6 4.2L33 58.8c-.7 1.6-2.6 2.3-4.2 1.6-1.7-.7-2.4-2.6-1.7-4.2z" />
+            </g>
+            <g class="leg1">
+                <path d="M52.1 73.2s-7-5.7-7.9-6.5c-.9-.9-1.2-3.5-.1-4.9 1.1-1.4 3.8-1.9 5.2-.9l7.9 7c1.4 1.1 1.7 3.5.7 4.9-1.1 1.4-4.4 1.5-5.8.4z" />
+                <path class="calf1" d="M52.6 84.4l-1-12.8c-.1-1.9 1.5-3.6 3.5-3.7 2-.1 3.7 1.4 3.8 3.4l1 12.8c.1 1.9-1.5 3.6-3.5 3.7-2 0-3.7-1.5-3.8-3.4z" />
+            </g>
+            <g class="leg2">
+                <path d="M37.8 72.7s1.3-10.2 1.6-11.4 2.4-2.8 4.1-2.6c1.7.2 3.6 2.3 3.4 4l-1.8 11.1c-.2 1.7-1.7 3.3-3.4 3.1-1.8-.2-4.1-2.4-3.9-4.2z" />
+                <path class="calf2" d="M29.5 82.3l9.6-10.9c1.3-1.4 3.6-1.5 5.1-.1 1.5 1.4.4 4.9-.9 6.3l-8.5 9.6c-1.3 1.4-3.6 1.5-5.1.1-1.4-1.3-1.5-3.5-.2-5z" />
+            </g>
+        </svg>
+        <svg class="door" viewBox="0 0 100 100">
+            <path d="M93.4 86.3H58.6c-1.9 0-3.4-1.5-3.4-3.4V17.1c0-1.9 1.5-3.4 3.4-3.4h34.8c1.9 0 3.4 1.5 3.4 3.4v65.8c0 1.9-1.5 3.4-3.4 3.4z" />
+            <circle cx="66" cy="50" r="3.7" />
+        </svg>
+        <span class="button-text"><a href="login" style="color: white;text-decoration: none">Log Out</a></span>
+    </button>
+</div>
+</body>
+
+
+
+<script>
+
+    document.querySelectorAll('.logoutButton').forEach(button => {
+        button.state = 'default'
+
+        // function to transition a button from one state to the next
+        let updateButtonState = (button, state) => {
+            if (logoutButtonStates[state]) {
+                button.state = state
+                for (let key in logoutButtonStates[state]) {
+                    button.style.setProperty(key, logoutButtonStates[state][key])
+                }
+            }
+        }
+
+        // mouse hover listeners on button
+        button.addEventListener('mouseenter', () => {
+            if (button.state === 'default') {
+                updateButtonState(button, 'hover')
+            }
+        })
+        button.addEventListener('mouseleave', () => {
+            if (button.state === 'hover') {
+                updateButtonState(button, 'default')
+            }
+        })
+
+        // click listener on button
+        button.addEventListener('click', () => {
+            if (button.state === 'default' || button.state === 'hover') {
+                button.classList.add('clicked')
+                updateButtonState(button, 'walking1')
+                setTimeout(() => {
+                    button.classList.add('door-slammed')
+                    updateButtonState(button, 'walking2')
+                    setTimeout(() => {
+                        button.classList.add('falling')
+                        updateButtonState(button, 'falling1')
+                        setTimeout(() => {
+                            updateButtonState(button, 'falling2')
+                            setTimeout(() => {
+                                updateButtonState(button, 'falling3')
+                                setTimeout(() => {
+                                    button.classList.remove('clicked')
+                                    button.classList.remove('door-slammed')
+                                    button.classList.remove('falling')
+                                    updateButtonState(button, 'default')
+                                }, 1000)
+                            }, logoutButtonStates['falling2']['--walking-duration'])
+                        }, logoutButtonStates['falling1']['--walking-duration'])
+                    }, logoutButtonStates['walking2']['--figure-duration'])
+                }, logoutButtonStates['walking1']['--figure-duration'])
+            }
+        })
+    })
+
+    const logoutButtonStates = {
+        'default': {
+            '--figure-duration': '100',
+            '--transform-figure': 'none',
+            '--walking-duration': '100',
+            '--transform-arm1': 'none',
+            '--transform-wrist1': 'none',
+            '--transform-arm2': 'none',
+            '--transform-wrist2': 'none',
+            '--transform-leg1': 'none',
+            '--transform-calf1': 'none',
+            '--transform-leg2': 'none',
+            '--transform-calf2': 'none'
+        },
+        'hover': {
+            '--figure-duration': '100',
+            '--transform-figure': 'translateX(1.5px)',
+            '--walking-duration': '100',
+            '--transform-arm1': 'rotate(-5deg)',
+            '--transform-wrist1': 'rotate(-15deg)',
+            '--transform-arm2': 'rotate(5deg)',
+            '--transform-wrist2': 'rotate(6deg)',
+            '--transform-leg1': 'rotate(-10deg)',
+            '--transform-calf1': 'rotate(5deg)',
+            '--transform-leg2': 'rotate(20deg)',
+            '--transform-calf2': 'rotate(-20deg)'
+        },
+        'walking1': {
+            '--figure-duration': '300',
+            '--transform-figure': 'translateX(11px)',
+            '--walking-duration': '300',
+            '--transform-arm1': 'translateX(-4px) translateY(-2px) rotate(120deg)',
+            '--transform-wrist1': 'rotate(-5deg)',
+            '--transform-arm2': 'translateX(4px) rotate(-110deg)',
+            '--transform-wrist2': 'rotate(-5deg)',
+            '--transform-leg1': 'translateX(-3px) rotate(80deg)',
+            '--transform-calf1': 'rotate(-30deg)',
+            '--transform-leg2': 'translateX(4px) rotate(-60deg)',
+            '--transform-calf2': 'rotate(20deg)'
+        },
+        'walking2': {
+            '--figure-duration': '400',
+            '--transform-figure': 'translateX(17px)',
+            '--walking-duration': '300',
+            '--transform-arm1': 'rotate(60deg)',
+            '--transform-wrist1': 'rotate(-15deg)',
+            '--transform-arm2': 'rotate(-45deg)',
+            '--transform-wrist2': 'rotate(6deg)',
+            '--transform-leg1': 'rotate(-5deg)',
+            '--transform-calf1': 'rotate(10deg)',
+            '--transform-leg2': 'rotate(10deg)',
+            '--transform-calf2': 'rotate(-20deg)'
+        },
+        'falling1': {
+            '--figure-duration': '1600',
+            '--walking-duration': '400',
+            '--transform-arm1': 'rotate(-60deg)',
+            '--transform-wrist1': 'none',
+            '--transform-arm2': 'rotate(30deg)',
+            '--transform-wrist2': 'rotate(120deg)',
+            '--transform-leg1': 'rotate(-30deg)',
+            '--transform-calf1': 'rotate(-20deg)',
+            '--transform-leg2': 'rotate(20deg)'
+        },
+        'falling2': {
+            '--walking-duration': '300',
+            '--transform-arm1': 'rotate(-100deg)',
+            '--transform-arm2': 'rotate(-60deg)',
+            '--transform-wrist2': 'rotate(60deg)',
+            '--transform-leg1': 'rotate(80deg)',
+            '--transform-calf1': 'rotate(20deg)',
+            '--transform-leg2': 'rotate(-60deg)'
+        },
+        'falling3': {
+            '--walking-duration': '500',
+            '--transform-arm1': 'rotate(-30deg)',
+            '--transform-wrist1': 'rotate(40deg)',
+            '--transform-arm2': 'rotate(50deg)',
+            '--transform-wrist2': 'none',
+            '--transform-leg1': 'rotate(-30deg)',
+            '--transform-leg2': 'rotate(20deg)',
+            '--transform-calf2': 'none'
+        }
+    }
+
+
+</script>
+</html>

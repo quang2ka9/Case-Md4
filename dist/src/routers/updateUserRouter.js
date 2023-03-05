@@ -5,10 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
-router.get("/ChangePassword", async (req, res) => {
-    res.render("changePassword");
-});
-router.post("/ChangePassword/:id", async (req, res) => {
+router.get("/updateUser", async (req, res) => {
+    res.render("updateUser");
 });
 exports.default = router;
-//# sourceMappingURL=changePasswordRouter.js.map
+//# sourceMappingURL=updateUserRouter.js.map

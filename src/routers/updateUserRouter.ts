@@ -1,8 +1,8 @@
 import express from "express";
 const router = express.Router();
 
-router.get("/homes", async (req, res) => {
-    res.render("homes")
+router.get("/updateUser", async (req, res) => {
+    res.render("updateUser")
 })
 
 
