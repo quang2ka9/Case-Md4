@@ -23,16 +23,12 @@
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose" />
 /// <reference types="mongoose/types/inferschematype" />
-interface IUser {
-    username: string;
-    password: string;
-    age: number;
-    address: string;
-    gender: string;
-    phone: number;
-    role: string;
+interface IWallet {
+    idUser: string;
+    walletName: string;
+    totalMoneyLeft: number;
 }
-declare const UserModel: import("mongoose").Model<IUser, {}, {}, {}, import("mongoose").Document<unknown, {}, IUser> & Omit<IUser & {
+declare const Wallet: import("mongoose").Model<IWallet, {}, {}, {}, import("mongoose").Document<unknown, {}, IWallet> & Omit<IWallet & {
     _id: import("mongoose").Types.ObjectId;
 }, never>, any>;
-export { UserModel };
+export default Wallet;

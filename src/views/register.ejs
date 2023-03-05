@@ -30,7 +30,7 @@
         border-radius: 0.5em;
         box-shadow: 0 0 1em 0 rgba(51, 51, 51, 0.25);
         display: block;
-        max-width: 480px;
+        max-width: 700px;
         overflow: hidden;
         -webkit-transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
@@ -275,7 +275,7 @@
         overflow: visible;
         display: inline-block;
         position: relative;
-        margin-bottom: 15px;
+        margin-bottom: 0px;
     }
 
     label.radio:before {
@@ -312,6 +312,12 @@
     input[type=radio]:checked + label:after {
         opacity: 1;
     }
+
+
+
+
+
+
 </style>
 <body>
 
@@ -324,23 +330,47 @@
         </h1>
     </header>
     <h1 class="text-center">Register</h1>
-    <form action="/api/user/register" method="POST" enctype="multipart/form-data">
+    <form action="/api/user/register" method="POST" >
         <label>
-            <span class="label-text">username</span>
-            <input type="text" name="username" id="username >
+            <span class="label-text">Username</span>
+            <input type="text" name="username" id="username" >
         </label>
-        <label class="password>
+        <label>
             <span class="label-text">Password</span>
-            <button class="toggle-visibility" title="toggle password visibility" tabindex="-1">
-                <span class="glyphicon glyphicon-eye-close"></span>
-            </button>
-            <input type="password" name="password" id="password">
+            <input type="password" name="password" id="password" >
         </label>
+        <label>
+            <span class="label-text">Age</span>
+            <input type="number" name="age" id="age" >
+        </label>
+        <label>
+            <span class="label-text">Address</span>
+            <input type="text" name="address" id="address" >
+        </label>
+        <label>
+            <span class="label-text">Gender</span>
+            <div class="gender">
+                <input type="radio" value="None" id="male" name="male" checked/>
+                <label for="male" class="radio" chec>Male</label>
+                <input type="radio" value="None" id="female" name="female" />
+                <label for="female" class="radio">Female</label>
+            </div>
 
-            <label>
-                <span class="label-text">role</span>
-                <input type="text" name="role" id="role">
-            </label>
+        </label>
+        <label>
+            <span class="label-text">Phone</span>
+            <input type="number" name="phone" id="phone" >
+        </label>
+        <label>
+            <span class="label-text">Role</span>
+            <div class="gender">
+                <input type="radio" value="None" id="admin" name="admin" checked/>
+                <label for="admin" class="radio" chec>Admin</label>
+                <input type="radio" value="None" id="user" name="user" />
+                <label for="user" class="radio">User</label>
+            </div>
+
+        </label>
 
             <button type="submit" class="submit" name="register">Sign Up</button>
     </form>

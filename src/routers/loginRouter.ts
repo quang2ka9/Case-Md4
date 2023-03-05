@@ -33,7 +33,7 @@ router.post("/login", upload.none(), async (req, res) => {
             const token = jwt.sign(payload, '123456789', {
                 expiresIn: 36000,
             });
-            res.render("home", {token: token});
+            res.render("homes", {token: token});
         } else {
             return res.json({ err: 'Sai tài khoản hặc mật khẩu' });
         }
