@@ -5,24 +5,42 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
-const passport_1 = __importDefault(require("passport"));
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const bcrypt_1 = __importDefault(require("bcrypt"));
+const userSchema_1 = require("../models/schemas/userSchema");
 const multer_1 = __importDefault(require("multer"));
 const upload = (0, multer_1.default)();
-router.get("/login", (req, res) => {
+router.get("/login", async (req, res) => {
     res.render("login");
 });
-router.post('/login', upload.none(), (req, res, next) => {
-    passport_1.default.authenticate("local", (err, user) => {
-        if (err) {
-            return next(err);
+router.post("/login", upload.none(), async (req, res) => {
+    try {
+        const user = await userSchema_1.UserModel.findOne({ username: req.body.username });
+        if (user) {
+            const comparePass = await bcrypt_1.default.compare(req.body.password, user.password);
+            if (!comparePass) {
+                return Promise.reject({
+                    code: 404,
+                    message: "PASSWORD_NOT_VALID",
+                });
+            }
+            let payload = {
+                user_id: user["id"],
+                username: user["username"],
+                role: user["role"]
+            };
+            const token = jsonwebtoken_1.default.sign(payload, '123456789', {
+                expiresIn: 36000,
+            });
+            res.render("home", { token: token });
         }
-        if (!user) {
-            return res.send("Wrong email or password");
+        else {
+            return res.json({ err: 'Sai tài khoản hặc mật khẩu' });
         }
-        req.login(user, () => {
-            res.send("You are authenticated");
-        });
-    })(req, res, next);
+    }
+    catch (err) {
+        return res.json({ err: err });
+    }
 });
 exports.default = router;
 //# sourceMappingURL=loginRouter.js.map
