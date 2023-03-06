@@ -3,11 +3,11 @@ import loginRouter from "./loginRouter";
 import registerRouter from "./registerRouters";
 import changePasswordRouter from "./changePasswordRouter";
 import homeRouter from "./homeRouter";
-import listRouter from "./listRouter";
-import productRouter from "./productRouter";
 import informationRouter from "./informationRouter"
 import updateUserRouter from "./updateUserRouter";
 import wallerRouter from "./wallerRouter";
+import wallerCreateRouter from "./wallerCreateRouter";
+import productRouters from "./listWallerRouter";
 
 const router = Router();
 
@@ -15,11 +15,11 @@ router.use('/', loginRouter);
 router.use('/', registerRouter);
 router.use('/', changePasswordRouter);
 router.use('/', homeRouter);
-router.use('/', listRouter);
-router.use('/', productRouter);
 router.use('/', informationRouter);
 router.use('/', updateUserRouter);
 router.use('/', wallerRouter);
+router.use('/', wallerCreateRouter);
+router.use('/', productRouters);
 
 
 export default router;
