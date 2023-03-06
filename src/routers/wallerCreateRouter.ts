@@ -5,7 +5,7 @@ import multer from "multer";
 const upload = multer()
 
 productRouters.get('/create', (req, res)=>{
-    res.render("wallerCreate");
+    res.render("listWaller");
 });
 
 productRouters.post('/create', upload.none(), async (req, res)=>{

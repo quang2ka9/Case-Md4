@@ -9,7 +9,7 @@ const wallerSchema_1 = require("../models/schemas/wallerSchema");
 const multer_1 = __importDefault(require("multer"));
 const upload = (0, multer_1.default)();
 productRouters.get('/create', (req, res) => {
-    res.render("wallerCreate");
+    res.render("listWaller");
 });
 productRouters.post('/create', upload.none(), async (req, res) => {
     try {

@@ -436,6 +436,73 @@
         border: 0;
     }
 
+
+
+
+
+
+
+
+    #form-container {
+        display: none;
+        width: 400px;
+        background-color: #f2f2f2;
+        padding: 20px;
+        border-radius: 5px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+    }
+
+    #open-form-btn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 800px;
+        margin-bottom: 100px;
+    }
+
+    #open-form-btn:hover {
+        background-color: #3e8e41;
+    }
+
+    #form-container label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    #form-container input[type="text"],
+    #form-container input[type="email"],
+    #form-container textarea {
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 3px;
+        background-color: #fff;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    }
+
+    #form-container button[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+
+    }
+
+    #form-container button[type="submit"]:hover {
+        background-color: #3e8e41;
+
+    }
+
 </style>
 <body>
 
@@ -483,6 +550,21 @@
         </div>
     </div>
 </div>
+</div>
+
+
+
+
+<button id="open-form-btn">Thêm ví mới</button>
+
+<div id="form-container">
+    <form action="/create" method="POST" enctype="multipart/form-data">
+        <label for="name">Tên:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="money">số tiền</label>
+        <input type="number" id="money" name="money"><br><br>
+        <button type="submit">Gửi</button>
+    </form>
 </div>
 
 
@@ -545,6 +627,15 @@
         slider.init()
     }
 
+</script>
+
+<script>
+    const openFormBtn = document.getElementById('open-form-btn');
+    const formContainer = document.getElementById('form-container');
+
+    openFormBtn.addEventListener('click', function() {
+        formContainer.style.display = 'block';
+    });
 </script>
 </body>
 </html>
