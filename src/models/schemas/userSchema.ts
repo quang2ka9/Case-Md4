@@ -1,30 +1,28 @@
-import {Schema, model} from "mongoose";
+import { Schema, model } from "mongoose";
 
 interface IUser {
-
-    name: string;
-
-    email: string;
-
+    username: string;
     password: string;
+    age: number;
+    address: string;
+    gender: string;
+    phone: number;
+    role: string;
+
 
 }
 
-
-
 const userSchema = new Schema<IUser>({
 
-    name: String,
-
-    email: String,
-
-    password: String
+    username: String,
+    password: String,
+    age: Number,
+    address: String,
+    gender: String,
+    phone: Number,
+    role: String
 })
 
+const UserModel = model<IUser>('User', userSchema);
 
-
-const User = model<IUser>('Product', userSchema);
-
-
-
-export { User };
+export { UserModel };

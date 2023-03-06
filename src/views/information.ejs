@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .user-profile {
+        width: 400px;
+        margin: 0 auto;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+        padding: 2em;
+        position: absolute;
+        top: 18%;
+        left: 35%;
+        z-index: 1;
+    }
+
+    .user-header {
+        background-color: #1abc9c;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .user-header img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin-right: 20px;
+    }
+
+    .user-title h2 {
+        margin: 0;
+    }
+
+    .user-details {
+        padding: 20px;
+    }
+
+    h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+    }
+
+    i {
+        margin-right: 10px;
+    }
+</style>
+<body>
+<div class="user-profile">
+    <div class="user-header">
+        <h1>Personal Information</h1>
+    </div>
+    <div class="user-details">
+        <ul>
+            <li><i class="fas fa-birthday-cake"></i>username:</li>
+            <li><i class="fas fa-venus-mars"></i>password:</li>
+            <li><i class="fas fa-user"></i> age:</li>
+            <li><i class="fas fa-user"></i> address:</li>
+            <li><i class="fas fa-user"></i> gender:</li>
+            <li><i class="fas fa-user"></i> phone:</li>
+            <li><i class="fas fa-user"></i> role:</li>
+        </ul>
+        <button type="button" class="btn btn-primary"><a href="/updateUser">Update Prrofile</a></button>
+    </div>
+</div>
+</body>
+</html>
