@@ -3,11 +3,13 @@ import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import router from "./src/routers/index";
+import walletDemo from "./src/routers/walletDemo";
 
 const PORT = 3000;
 const app = express();
 app.set("view engine", "ejs");
 app.set('views', './src/views');
+app.use(express.urlencoded({ extended: true }));
 
 const DB_URL = 'mongodb://127.0.0.1:27017/FinancialManagement';
 mongoose.connect(DB_URL)
@@ -15,7 +17,8 @@ mongoose.connect(DB_URL)
     .catch(error => console.log('DB connection error:', error.message));
 
 app.use(bodyParser.json());
-app.use("", router);
+// app.use("", router);
+app.use(walletDemo);
 
 app.listen(PORT, () => {
     console.log("App running on port: "+ PORT)
