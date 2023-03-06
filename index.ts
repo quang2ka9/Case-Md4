@@ -9,10 +9,10 @@ const app = express();
 app.set("view engine", "ejs");
 app.set('views', './src/views');
 app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 const DB_URL = 'mongodb://127.0.0.1:27017/FinancialManagement';
-
-
 
 mongoose.connect(DB_URL)
     .then(() => console.log('DB Connected!'))

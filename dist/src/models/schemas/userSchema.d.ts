@@ -24,13 +24,13 @@
 /// <reference types="mongoose" />
 /// <reference types="mongoose/types/inferschematype" />
 interface IUser {
-    username: string;
-    password: string;
-    age: number;
-    address: string;
-    gender: string;
-    phone: number;
-    role: string;
+    username?: string;
+    password?: string;
+    age?: number;
+    address?: string;
+    gender?: string;
+    phone?: number;
+    role?: string;
 }
 declare const UserModel: import("mongoose").Model<IUser, {}, {}, {}, import("mongoose").Document<unknown, {}, IUser> & Omit<IUser & {
     _id: import("mongoose").Types.ObjectId;

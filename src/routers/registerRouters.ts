@@ -12,27 +12,24 @@ router.get("/viewInfor", async (req, res) => {
     res.render("information");
 })
 router.post("/register", async (req, res) => {
+    const { username , password, age,address, gender, phone,role } = req.body
+    console.log(req.body)
+    const saltRounds = 10;
     try {
-        const user = await UserModel.findOne({username: req.body.username});
-        if (!user) {
-            const passwordHash = await bcrypt.hash(req.body.password, 10);
-            let userData = {
-                username: req.body.username,
-                age: req.body.age,
-                address: req.body.address,
-                gender: req.body.gender,
-                phone: req.body.phone,
-                role: req.body.role,
-                password: passwordHash,
-            }
-            const newUser = await UserModel.create(userData);
-            res.json({user: newUser, code: 200});
-            res.render("login");
-        } else {
-            res.json({err: "User exited"})
-        }
+            const passwordHash = await bcrypt.hash(password, saltRounds);
+            let userData = new UserModel({
+                username,
+                age,
+                address,
+                gender,
+                phone,
+                role,
+                password: passwordHash
+            })
+            await UserModel.create(userData);
+            res.redirect("/login");
     } catch (err) {
-        res.json({err: err})
+        res.redirect("/register");
     }
 });
 export default router;

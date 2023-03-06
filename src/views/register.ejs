@@ -330,7 +330,7 @@
         </h1>
     </header>
     <h1 class="text-center">Register</h1>
-    <form action="/api/user/register" method="POST" >
+    <form action="/register" method="post">
         <label>
             <span class="label-text">Username</span>
             <input type="text" name="username" id="username" >
@@ -349,30 +349,18 @@
         </label>
         <label>
             <span class="label-text">Gender</span>
-            <div class="gender">
-                <input type="radio" value="None" id="male" name="male" checked/>
-                <label for="male" class="radio" chec>Male</label>
-                <input type="radio" value="None" id="female" name="female" />
-                <label for="female" class="radio">Female</label>
-            </div>
-
+            <input type="text" name="gender" id="gender" >
         </label>
         <label>
             <span class="label-text">Phone</span>
             <input type="number" name="phone" id="phone" >
         </label>
         <label>
-            <span class="label-text">Role</span>
-            <div class="gender">
-                <input type="radio" value="None" id="admin" name="admin" checked/>
-                <label for="admin" class="radio" chec>Admin</label>
-                <input type="radio" value="None" id="user" name="user" />
-                <label for="user" class="radio">User</label>
-            </div>
-
+            <span class="label-text">role</span>
+            <input type="text" name="role" id="role" >
         </label>
 
-            <button type="submit" class="submit" name="register">Sign Up</button>
+            <button type="submit" class="submit">Sign Up</button>
     </form>
 </div>
 

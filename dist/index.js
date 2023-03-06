@@ -12,6 +12,8 @@ const app = (0, express_1.default)();
 app.set("view engine", "ejs");
 app.set('views', './src/views');
 app.use(body_parser_1.default.json());
+app.use(express_1.default.json());
+app.use(express_1.default.urlencoded({ extended: false }));
 const DB_URL = 'mongodb://127.0.0.1:27017/FinancialManagement';
 mongoose_1.default.connect(DB_URL)
     .then(() => console.log('DB Connected!'))
