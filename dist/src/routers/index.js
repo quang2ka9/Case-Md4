@@ -13,7 +13,6 @@ const updateUserRouter_1 = __importDefault(require("./updateUserRouter"));
 const wallerRouter_1 = __importDefault(require("./wallerRouter"));
 const wallerCreateRouter_1 = __importDefault(require("./wallerCreateRouter"));
 const listWallerRouter_1 = __importDefault(require("./listWallerRouter"));
-const walletDemo_1 = __importDefault(require("./walletDemo"));
 const router = (0, express_1.Router)();
 router.use('/', loginRouter_1.default);
 router.use('/', registerRouters_1.default);
@@ -24,6 +23,5 @@ router.use('/', updateUserRouter_1.default);
 router.use('/', wallerRouter_1.default);
 router.use('/', wallerCreateRouter_1.default);
 router.use('/', listWallerRouter_1.default);
-router.use('/', walletDemo_1.default);
 exports.default = router;
 //# sourceMappingURL=index.js.map

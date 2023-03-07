@@ -5,8 +5,18 @@ const productRouters = (0, express_1.Router)();
 const wallerSchema_1 = require("../models/schemas/wallerSchema");
 productRouters.get('/listWaller', async (req, res) => {
     try {
-        const products = await wallerSchema_1.Product.find();
-        console.log("abc", products);
+        let limit;
+        let offset;
+        if (!req.query.limit || !req.query.limit) {
+            limit = 1;
+            offset = 0;
+        }
+        else {
+            limit = parseInt(req.query.limit);
+            offset = parseInt(req.query.offset);
+        }
+        const products = await wallerSchema_1.Product.find().limit(limit).skip(limit * offset);
+        ;
         res.render("listWaller", { products: products });
     }
     catch (_a) {

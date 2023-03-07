@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const mongoose_1 = __importDefault(require("mongoose"));
-const walletDemo_1 = __importDefault(require("./src/routers/walletDemo"));
+const index_1 = __importDefault(require("./src/routers/index"));
 const PORT = 3000;
 const app = (0, express_1.default)();
 app.set("view engine", "ejs");
@@ -17,7 +17,7 @@ mongoose_1.default.connect(DB_URL)
     .then(() => console.log('DB Connected!'))
     .catch(error => console.log('DB connection error:', error.message));
 app.use(body_parser_1.default.json());
-app.use(walletDemo_1.default);
+app.use("", index_1.default);
 app.listen(PORT, () => {
     console.log("App running on port: " + PORT);
 });

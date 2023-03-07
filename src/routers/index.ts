@@ -8,7 +8,7 @@ import updateUserRouter from "./updateUserRouter";
 import wallerRouter from "./wallerRouter";
 import wallerCreateRouter from "./wallerCreateRouter";
 import productRouters from "./listWallerRouter";
-import walletDemo from "./walletDemo";
+
 
 const router = Router();
 
@@ -21,7 +21,7 @@ router.use('/', updateUserRouter);
 router.use('/', wallerRouter);
 router.use('/', wallerCreateRouter);
 router.use('/', productRouters);
-router.use('/', walletDemo);
+
 
 
 export default router;

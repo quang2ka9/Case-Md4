@@ -1,9 +1,9 @@
 import mongoose, { Document } from 'mongoose';
-export interface Wallet extends Document {
-    userId: string;
+export interface WalletDocument extends Document {
+    user: string;
     balance: number;
 }
-declare const _default: mongoose.Model<Wallet, {}, {}, {}, mongoose.Document<unknown, {}, Wallet> & Omit<Wallet & {
+declare const Wallet: mongoose.Model<WalletDocument, {}, {}, {}, mongoose.Document<unknown, {}, WalletDocument> & Omit<WalletDocument & {
     _id: mongoose.Types.ObjectId;
 }, never>, any>;
-export default _default;
+export default Wallet;
