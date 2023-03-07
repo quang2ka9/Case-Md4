@@ -1,0 +1,170 @@
+<!--<div class="page-heading">-->
+<!--    <h1>Register a new product</h1>-->
+<!--</div>-->
+<!--<form action="/product/createTransaction" method="POST" enctype="multipart/form-data">-->
+<!--    <div class="control-group">-->
+<!--        -->
+<!--        <div class="form-group floating-label-form-group controls">-->
+<!--            <label>idUser</label>-->
+<!--            <input type="text" class="form-control" id="idUser" name="idUser">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="control-group">-->
+<!--        <div class="form-group floating-label-form-group controls">-->
+<!--            <label>nameWallet</label>-->
+<!--            <input type="text" class="form-control" id="nameWallet" name="nameWallet">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="control-group">-->
+<!--        <div class="form-group floating-label-form-group controls">-->
+<!--            <label>moneyTrade</label>-->
+<!--            <input type="number" class="form-control" id="moneyTrade" name="moneyTrade">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="control-group">-->
+<!--        <div class="form-group floating-label-form-group controls">-->
+<!--            <label>nameTransaction</label>-->
+<!--            <input type="text" class="form-control" id="nameTransaction" name="nameTransaction">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="control-group">-->
+<!--        <div class="form-group floating-label-form-group controls">-->
+<!--            <label>status</label>-->
+<!--            <input type="text" class="form-control" id="status" name="status">-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group">-->
+
+<!--        <button type="submit" class="btn btn-primary" >Create</button></div>-->
+<!--</form>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .transaction-form {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input[type="date"],
+    input[type="text"],
+    input[type="number"] {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        background-color: #fff;
+        color: #495057;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    input[type="date"]:focus,
+    input[type="text"]:focus,
+    input[type="number"]:focus {
+        border-color: #80bdff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+
+    .invalid-feedback {
+        color: #dc3545;
+        margin-top: 5px;
+        font-size: 14px;
+        display: none;
+    }
+
+    .invalid-feedback.active {
+        display: block;
+    }
+</style>
+<body>
+<!--onsubmit="return validateForm()-->
+<form  action="/updateTransaction" method="POST" enctype="multipart/form-data" class="transaction-form" >
+
+    <div class="form-group floating-label-form-group controls">
+
+        <label>Id</label>
+
+        <input type="hidden" class="form-control" id="id" name="id" value="<%=transaction.id%>">
+
+    </div>
+
+    <div class="form-group">
+        <label for="idUser">idUser:</label>
+        <input type="text" id="idUser" name="idUser" value="<%=transaction.idUser%> required>
+
+    </div>
+
+    <div class="form-group">
+        <label for="nameWallet">Tên ví:</label>
+        <input type="text" id="nameWallet" name="nameWallet"  <%=transaction.nameWallet%> required>
+        <div class="invalid-feedback">Vui lòng nhập nameWallet!</div>
+    </div>
+
+    <div class="form-group">
+        <label for="moneyTrade">Số tiền giao dịch:</label>
+        <input type="text" id="moneyTrade" name="moneyTrade"   <%=transaction.moneyTrade%> required>
+        <div class="invalid-feedback">Vui lòng nhập số tiền hợp lệ!</div>
+    </div>
+
+    <div class="form-group">
+        <label for="nameTransaction">Tên giao dịch:</label>
+        <input type="text" id="nameTransaction" name="nameTransaction" <%=transaction.nameTransaction%> required>
+        <div class="invalid-feedback">Vui lòng nhập nameTransaction!</div>
+    </div>
+
+    <!--    <div class="form-group">-->
+    <!--        <label for="timeTrade">Ngày tháng giao dịch:</label>-->
+    <!--        <input type="date" id="timeTrade" name="timeTrade" required>-->
+    <!--        <div class="invalid-feedback">Vui lòng nhập ngày tháng hợp lệ!</div>-->
+    <!--    </div>-->
+
+    <div class="form-group">
+        <label for="status">Trạng thái:</label>
+        <input type="text" id="status" name="status" <%=transaction.status%> required>
+        <div class="invalid-feedback">Vui lòng nhập status!</div>
+    </div>
+    <button type="submit">Gửi</button>
+</form>
+
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>-->
+<!--<script>-->
+<!--    function validateForm() {-->
+<!--        var date = moment(document.getElementById("date").value, "YYYY-MM-DD");-->
+<!--        if (!date.isValid()) {-->
+<!--            alert("Ngày tháng không hợp lệ!");-->
+<!--            return false;-->
+<!--        }-->
+<!--        return true;-->
+<!--    }-->
+<!--</script>-->
+
+
+</body>
+</html>
+
+

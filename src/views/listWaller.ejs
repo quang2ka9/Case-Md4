@@ -389,14 +389,14 @@
         </div>
         <div class="container">
             <form action="#">
-                <input type="number" name="q"/>
+                <input type="number" name="q" min="0"/>
                 <input type="submit" value="Nạp tiền"/>
             </form>
         </div>
         <br>
         <div class="container">
             <form action="#">
-                <input type="number" name="q"/>
+                <input type="number" name="q" min="0"/>
                 <input type="submit" value="Rút tiền"/>
             </form>
         </div>
@@ -405,7 +405,7 @@
         <br>
         <div class="container">
             <form action="#">
-               <h3> <a href="/homes">exit</a></h3>
+               <h3> <a style="text-decoration: none" href="/homes">Exit</a></h3>
             </form>
         </div>
     </div>
@@ -420,8 +420,10 @@
         <label for="nameWallet">Tên:</label>
         <input type="text" id="nameWallet" name="nameWallet"><br><br>
         <label for="money">số tiền</label>
-        <input type="number" id="money" name="money"><br><br>
+        <input type="number" id="money" name="money" min="0"><br><br>
         <button type="submit">Gửi</button>
+        <br>
+         <a style="text-decoration: none" href="/listWaller">Thoát</a>
     </form>
 </div>
 

@@ -8,6 +8,7 @@ import updateUserRouter from "./updateUserRouter";
 import wallerRouter from "./wallerRouter";
 import wallerCreateRouter from "./wallerCreateRouter";
 import wallerRouters from "./listWallerRouter";
+import transactionRouters from "./transactionRouter";
 
 
 const router = Router();
@@ -21,6 +22,7 @@ router.use('/', updateUserRouter);
 router.use('/', wallerRouter);
 router.use('/', wallerCreateRouter);
 router.use('/',  wallerRouters);
+router.use('/',  transactionRouters);
 
 
 

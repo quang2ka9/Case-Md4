@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quản lý chi tiêu</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #2c2c09;
+            color: white;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type=text] {
+            padding: 8px;
+            border: none;
+            border-bottom: 1px solid #ddd;
+            width: 50%;
+        }
+
+        input[type=submit] {
+            background-color: #2c2c09;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 12px 18px;
+            text-decoration: none;
+
+        }
+
+
+        .pagination a.active {
+            background-color: dodgerblue;
+            color: white;
+            border-radius: 50%;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+            border-radius: 50%;
+        }
+    </style>
+
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        const updateTransaction = (id) => {
+            window.open('http://localhost:3000/updateTransaction/' + id);
+        };
+        const deleteTransaction = async (id) => {
+            await $.ajax({
+                url: `http://localhost:3000/deleteTransaction/${id}`,
+                type: "DELETE",
+                dataType: "json",
+                contentType: "application/json",
+                success: function (result) {
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(thrownError);
+                }
+            });
+            location.reload();
+        };
+
+    </script>
+
+</head>
+<body>
+<h1>Quản lý chi tiêu</h1>
+<table>
+    <h3><a style="text-decoration: none" href="/createTransaction">Thêm mới</a></h3>
+    <thead>
+    <tr>
+        <th>idUser</th>
+        <th>nameWallet</th>
+        <th>moneyTrade</th>
+        <th>nameTransaction</th>
+        <th>status</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% for(const transaction of transactions) { %>
+        <tr>
+            <td> <%= transaction.idUser %></td>
+            <td> <%= transaction.nameWallet %></td>
+            <td>  <%= transaction.moneyTrade %></td>
+            <td>  <%= transaction.nameTransaction %></td>
+            <td> <%= transaction.status %></td>
+
+            <td>
+
+                <button onclick="updateTransaction('<%= transaction.id %>')">Update</button>
+                <button onclick="deleteTransaction('<%= transaction.id %>')">Delete</button>
+                <!--            <form action="" method="post">-->
+                <!--                <input type="hidden" name="id" value="1">-->
+                <!--                <input type="submit" name="edit" value="Sửa">-->
+                <!--                <input type="submit" name="delete" value="Xóa">-->
+                <!--            </form>-->
+            </td>
+        </tr>
+    <% } %>
+    <div class="pagination">
+        <a href="#">«</a>
+        <a href="http://localhost:3000/listTransaction?offset=0&limit=3">1</a>
+        <a href="http://localhost:3000/listTransaction?offset=1&limit=3">2</a>
+        <a href="http://localhost:3000/listTransaction?offset=2&limit=3">3</a>
+        <a href="http://localhost:3000/listTransaction?offset=3&limit=3">4</a>
+        <a href="http://localhost:3000/listTransaction?offset=4&limit=3">5</a>
+        <a href="http://localhost:3000/listTransaction?offset=5&limit=3">6</a>
+        <a href="#">»</a>
+    </div>
+    </tbody>
+</table>
+<h2><a style="text-decoration: none" href="/homes">Thoát » </a></h2>
+
+
+</body>
+</html>

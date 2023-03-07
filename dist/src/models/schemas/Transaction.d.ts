@@ -27,12 +27,10 @@ interface ITransaction {
     idUser: string;
     nameWallet: string;
     moneyTrade: number;
+    nameTransaction: string;
     status: string;
-    nameCategory: string;
-    desc: string;
-    timeTrade: Date;
 }
 declare const Transaction: import("mongoose").Model<ITransaction, {}, {}, {}, import("mongoose").Document<unknown, {}, ITransaction> & Omit<ITransaction & {
     _id: import("mongoose").Types.ObjectId;
 }, never>, any>;
-export default Transaction;
+export { Transaction };

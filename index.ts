@@ -19,6 +19,7 @@ mongoose.connect(DB_URL)
 app.use(bodyParser.json());
 app.use("", router);
 
+
 app.listen(PORT, () => {
     console.log("App running on port: "+ PORT)
 });

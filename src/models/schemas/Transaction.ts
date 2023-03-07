@@ -1,24 +1,24 @@
-import { Schema, model } from "mongoose";
+import {Schema, model} from "mongoose";
+
 interface ITransaction {
-    idUser: string,
-    nameWallet: string,
-    moneyTrade: number,
-    status: string,
-    nameCategory: string,
-    desc: string,
-    timeTrade: Date,
+
+    idUser: string;
+    nameWallet: string;
+    moneyTrade: number;
+    nameTransaction: string
+    status: string
 }
 
-const transactionSchema = new Schema<ITransaction>({
+const productSchema = new Schema<ITransaction>({
+
     idUser: String,
     nameWallet: String,
     moneyTrade: Number,
-    status: String,
-    nameCategory: String,
-    desc: String,
-    timeTrade: Date
+    nameTransaction: String,
+    status: String
+
 })
 
-const Transaction = model<ITransaction>('Transaction', transactionSchema);
+const Transaction = model<ITransaction>('Transaction', productSchema);
 
-export default Transaction;
+export {Transaction};
