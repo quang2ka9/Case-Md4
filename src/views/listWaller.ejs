@@ -288,7 +288,7 @@
         border: none;
         border-radius: 3px;
         background-color: #fff;
-        box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
     }
 
     #form-container button[type="submit"] {
@@ -359,19 +359,20 @@
                         TỔNG TIỀN:$<%= product.money %>
                     </div>
                 <% } %>
-                    <div class="pagination">
-                        <a href="#">«</a>
-                        <a href="http://localhost:3000/listWaller?offset=0&limit=1">1</a>
-                        <a href="http://localhost:3000/listWaller?offset=1&limit=1">2</a>
-                        <a href="http://localhost:3000/listWaller?offset=2&limit=1">3</a>
-                        <a href="http://localhost:3000/listWaller?offset=3&limit=1">4</a>
-                        <a href="http://localhost:3000/listWaller?offset=4&limit=1">5</a>
-                        <a href="http://localhost:3000/listWaller?offset=5&limit=1">6</a>
-                        <a href="#">»</a>
-                    </div>
+                <div class="pagination">
+                    <a href="#">«</a>
+                    <a href="http://localhost:3000/listWaller?offset=0&limit=1">1</a>
+                    <a href="http://localhost:3000/listWaller?offset=1&limit=1">2</a>
+                    <a href="http://localhost:3000/listWaller?offset=2&limit=1">3</a>
+                    <a href="http://localhost:3000/listWaller?offset=3&limit=1">4</a>
+                    <a href="http://localhost:3000/listWaller?offset=4&limit=1">5</a>
+                    <a href="http://localhost:3000/listWaller?offset=5&limit=1">6</a>
+                    <a href="#">»</a>
+                </div>
             </div>
             <div class="user-profile">
-                <img src="https://pbs.twimg.com/profile_images/834493671785525249/XdLjsJX_.jpg" class="user-photo">
+                <a href="/information"><img src="https://pbs.twimg.com/profile_images/834493671785525249/XdLjsJX_.jpg" class="user-photo"></a>
+
             </div>
         </div>
 
@@ -399,11 +400,17 @@
                 <input type="submit" value="Rút tiền"/>
             </form>
         </div>
+        <br>
+        <br>
+        <br>
+        <div class="container">
+            <form action="#">
+               <h3> <a href="/homes">exit</a></h3>
+            </form>
+        </div>
     </div>
 </div>
 </div>
-
-
 
 
 <button id="open-form-btn">Thêm ví mới</button>
@@ -417,7 +424,6 @@
         <button type="submit">Gửi</button>
     </form>
 </div>
-
 
 </body>
 
@@ -484,7 +490,7 @@
     const openFormBtn = document.getElementById('open-form-btn');
     const formContainer = document.getElementById('form-container');
 
-    openFormBtn.addEventListener('click', function() {
+    openFormBtn.addEventListener('click', function () {
         formContainer.style.display = 'block';
     });
 </script>
