@@ -15,8 +15,8 @@ router.get("/viewInfor", async (req, res) => {
 });
 router.post("/register", async (req, res) => {
     const { username, password, age, address, gender, phone, role } = req.body;
-    console.log(req.body);
     const saltRounds = 10;
+    console.log(req.body);
     try {
         const passwordHash = await bcrypt_1.default.hash(password, saltRounds);
         let userData = new userSchema_1.UserModel({

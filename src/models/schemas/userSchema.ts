@@ -2,13 +2,21 @@ import { Schema, model } from "mongoose";
 
 
 interface IUser {
-    username?: string;
+    username?:{
+        type :string,
+        unique : true,
+        required: true
+    }
     password?: string;
     age?: number;
     address?: string;
     gender?: string;
     phone?: number;
-    role?: string;
+    role?: {
+        type : string,
+        default: "user",
+    }
+
 
 
 }

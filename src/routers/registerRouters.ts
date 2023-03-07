@@ -8,13 +8,17 @@ import {UserModel} from '../models/schemas/userSchema';
 router.get("/register", async (req, res) => {
     res.render("register");
 })
+
+
 router.get("/viewInfor", async (req, res) => {
     res.render("information");
 })
+
+
 router.post("/register", async (req, res) => {
     const { username , password, age,address, gender, phone,role } = req.body
-    console.log(req.body)
     const saltRounds = 10;
+    console.log(req.body)
     try {
             const passwordHash = await bcrypt.hash(password, saltRounds);
             let userData = new UserModel({

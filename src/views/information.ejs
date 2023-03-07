@@ -69,13 +69,13 @@
     </div>
     <div class="user-details">
         <ul>
-            <li><i class="fas fa-birthday-cake"></i>username:</li>
-            <li><i class="fas fa-venus-mars"></i>password:</li>
-            <li><i class="fas fa-user"></i> age:</li>
-            <li><i class="fas fa-user"></i> address:</li>
-            <li><i class="fas fa-user"></i> gender:</li>
-            <li><i class="fas fa-user"></i> phone:</li>
-            <li><i class="fas fa-user"></i> role:</li>
+
+            <li><i class="fas fa-birthday-cake"></i>username: <%= user.username%></li>
+                <li><i class="fas fa-user"></i> age:<%= user.age%></li>
+            <li><i class="fas fa-user"></i> address:<%= user.address%></li>
+            <li><i class="fas fa-user"></i> gender:<%= user.gender%></li>
+            <li><i class="fas fa-user"></i> phone:<%= user.phone%></li>
+            <li><i class="fas fa-user"></i> role:<%= user.role%></li>
         </ul>
         <button type="button" class="btn btn-primary"><a href="/updateUser">Update Prrofile</a></button>
     </div>

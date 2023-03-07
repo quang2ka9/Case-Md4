@@ -75,54 +75,47 @@
             <h1>Edit Information </h1>
 
             <tr>
-                <td align="right" class="formLabel"> Username: <span class="req asterisk"></span></td>
-                <td align="left"><input type="text" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0"
-                                        size="25" value="username">
+                <td align="right" class="formLabel"> Username:<span class="req asterisk"></span></td>
+                <td align="left"><input type="text" autocapitalize="off" autocorrect="off" name="username" id="MERGE0"
+                                        size="25" value="<%= user.username%> ">
+                    <div class="error"></div>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="formLabel">Age: </td>
+                <td align="left"><input type="text" name="age" id="MERGE2" size="25" value="<%= user.age%>">
                     <div class="error"></div>
                 </td>
             </tr>
 
             <tr>
-                <td align="right" class="formLabel">Password:</td>
-                <td align="left"><input type="text" name="MERGE1" id="MERGE1" size="25" value="password">
-                    <div class="error"></div>
-                </td>
-            </tr>
-
-            <tr>
-                <td align="right" class="formLabel">Age:</td>
-                <td align="left"><input type="text" name="MERGE2" id="MERGE2" size="25" value="age">
-                    <div class="error"></div>
-                </td>
-            </tr>
-
-            <tr>
-                <td align="right" class="formLabel">Address:</td>
-                <td align="left"><input type="text" name="MERGE3" id="MERGE3" size="25" value="address">
+                <td align="right" class="formLabel">Address: </td>
+                <td align="left"><input type="text" name="address" id="MERGE3" size="25" value="<%= user.address%>">
                     <div class="error"></div>
                 </td>
             </tr>
 
             <tr>
                 <td align="right" class="formLabel">Gender:</td>
-                <td align="left"><input type="text" name="MERGE4" id="MERGE4" size="25" value="Gender">
+                <td align="left"><input type="text" name="gender" id="MERGE4" size="25" value="<%= user.gender%>">
                     <div class="error"></div>
                 </td>
             </tr>
 
             <tr>
                 <td align="right" class="formLabel">Phone:</td>
-                <td align="left"><input type="text" name="MERGE5" id="MERGE5" size="25" value="phone">
+                <td align="left"><input type="text" name="phone" id="MERGE5" size="25" value="<%= user.phone%>">
                     <div class="error"></div>
                 </td>
             </tr>
 
             <tr>
-                <td align="right" class="formLabel">Role:</td>
-                <td align="left"><input type="text" name="MERGE6" id="MERGE6" size="25" value="role">
+                <td align="right" class="formLabel">Role: </td>
+                <td align="left"><input type="text" name="role" id="MERGE6" size="25" value="<%= user.role%>">
                     <div class="error"></div>
                 </td>
             </tr>
+
 
             <tr>
                 <td align="right"></td>

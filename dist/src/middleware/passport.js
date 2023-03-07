@@ -10,6 +10,7 @@ passport_1.default.serializeUser((user, done) => {
     done(null, user);
 });
 passport_1.default.deserializeUser(function (user, done) {
+    console.log(1);
     done(null, user);
 });
 passport_1.default.use('local', new passport_local_1.default(async (email, password, done) => {
