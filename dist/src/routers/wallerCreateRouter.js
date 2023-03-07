@@ -4,18 +4,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const productRouters = (0, express_1.Router)();
+const walletRouters = (0, express_1.Router)();
 const wallerSchema_1 = require("../models/schemas/wallerSchema");
 const multer_1 = __importDefault(require("multer"));
 const upload = (0, multer_1.default)();
-productRouters.get('/create', (req, res) => {
+walletRouters.get('/create', (req, res) => {
     res.render("listWaller");
 });
-productRouters.post('/create', upload.none(), async (req, res) => {
+walletRouters.post('/create', upload.none(), async (req, res) => {
     try {
-        const productNew = new wallerSchema_1.Product(req.body);
-        const product = await productNew.save();
-        if (product) {
+        const walletNew = new wallerSchema_1.Wallet(req.body);
+        console.log("body", walletNew);
+        const wallet = await walletNew.save();
+        if (wallet) {
             res.redirect("listWaller");
         }
         else {
@@ -26,5 +27,5 @@ productRouters.post('/create', upload.none(), async (req, res) => {
         res.render("error");
     }
 });
-exports.default = productRouters;
+exports.default = walletRouters;
 //# sourceMappingURL=wallerCreateRouter.js.map

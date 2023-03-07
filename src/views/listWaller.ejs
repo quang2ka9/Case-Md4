@@ -351,12 +351,12 @@
     <div class="iphone">
         <div class="header">
             <div class="header-summary">
-                <% for(const product of products) { %>
+                <% for(const wallet of wallets) { %>
                     <div class="summary-text">
-                        TÊN VÍ: <%= product.name %>
+                        TÊN VÍ: <%= wallet.nameWallet %>
                     </div>
                     <div class="summary-balance">
-                        TỔNG TIỀN:$<%= product.money %>
+                        TỔNG TIỀN:$<%= wallet.money %>
                     </div>
                 <% } %>
                 <div class="pagination">
@@ -389,14 +389,14 @@
         </div>
         <div class="container">
             <form action="#">
-                <input type="number" name="q"/>
+                <input type="number" name="q" min="0"/>
                 <input type="submit" value="Nạp tiền"/>
             </form>
         </div>
         <br>
         <div class="container">
             <form action="#">
-                <input type="number" name="q"/>
+                <input type="number" name="q" min="0"/>
                 <input type="submit" value="Rút tiền"/>
             </form>
         </div>
@@ -405,7 +405,7 @@
         <br>
         <div class="container">
             <form action="#">
-               <h3> <a href="/homes">exit</a></h3>
+               <h3> <a style="text-decoration: none" href="/homes">Exit</a></h3>
             </form>
         </div>
     </div>
@@ -417,11 +417,13 @@
 
 <div id="form-container">
     <form action="/create" method="POST" enctype="multipart/form-data">
-        <label for="name">Tên:</label>
-        <input type="text" id="name" name="name"><br><br>
+        <label for="nameWallet">Tên:</label>
+        <input type="text" id="nameWallet" name="nameWallet"><br><br>
         <label for="money">số tiền</label>
-        <input type="number" id="money" name="money"><br><br>
+        <input type="number" id="money" name="money" min="0"><br><br>
         <button type="submit">Gửi</button>
+        <br>
+         <a style="text-decoration: none" href="/listWaller">Thoát</a>
     </form>
 </div>
 

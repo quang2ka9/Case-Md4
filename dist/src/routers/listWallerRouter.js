@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const productRouters = (0, express_1.Router)();
+const walletRouters = (0, express_1.Router)();
 const wallerSchema_1 = require("../models/schemas/wallerSchema");
-productRouters.get('/listWaller', async (req, res) => {
+walletRouters.get('/listWaller', async (req, res) => {
     try {
         let limit;
         let offset;
@@ -15,13 +15,12 @@ productRouters.get('/listWaller', async (req, res) => {
             limit = parseInt(req.query.limit);
             offset = parseInt(req.query.offset);
         }
-        const products = await wallerSchema_1.Product.find().limit(limit).skip(limit * offset);
-        ;
-        res.render("listWaller", { products: products });
+        const wallets = await wallerSchema_1.Wallet.find().limit(limit).skip(limit * offset);
+        res.render("listWaller", { wallets: wallets });
     }
     catch (_a) {
         res.render("error");
     }
 });
-exports.default = productRouters;
+exports.default = walletRouters;
 //# sourceMappingURL=listWallerRouter.js.map

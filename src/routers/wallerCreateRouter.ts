@@ -1,18 +1,19 @@
 import {Router} from "express";
-const productRouters = Router();
-import {Product} from "../models/schemas/wallerSchema";
+const walletRouters = Router();
+import {Wallet} from "../models/schemas/wallerSchema";
 import multer from "multer";
 const upload = multer()
 
-productRouters.get('/create', (req, res)=>{
+walletRouters.get('/create', (req, res)=>{
     res.render("listWaller");
 });
 
-productRouters.post('/create', upload.none(), async (req, res)=>{
+walletRouters.post('/create', upload.none(), async (req, res)=>{
     try {
-        const productNew = new Product(req.body);
-        const product = await productNew.save();
-        if(product){
+        const walletNew = new Wallet(req.body);
+        console.log("body" , walletNew)
+        const wallet = await walletNew.save();
+        if(wallet){
             res.redirect("listWaller");
         }else {
             res.render("error");
@@ -24,4 +25,4 @@ productRouters.post('/create', upload.none(), async (req, res)=>{
 
 
 
-export default productRouters;
+export default walletRouters;
