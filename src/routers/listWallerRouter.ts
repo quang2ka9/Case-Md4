@@ -1,8 +1,8 @@
 import {Router} from "express";
-const productRouters = Router();
-import {Product} from "../models/schemas/wallerSchema";
+const walletRouters = Router();
+import {Wallet} from "../models/schemas/wallerSchema";
 
-productRouters.get('/listWaller', async (req, res)=>{
+walletRouters.get('/listWaller', async (req, res)=>{
     try {
         let limit: number;
         let offset: number;
@@ -13,12 +13,12 @@ productRouters.get('/listWaller', async (req, res)=>{
             limit = parseInt(req.query.limit as string);
             offset = parseInt(req.query.offset as string);
         }
-        const products = await Product.find().limit(limit).skip(limit*offset);;
-        res.render("listWaller", { products: products });
+        const wallets = await Wallet.find().limit(limit).skip(limit*offset);
+        res.render("listWaller", { wallets: wallets });
     } catch {
         res.render("error");
     }
 });
 
-export default productRouters;
+export default walletRouters;
 

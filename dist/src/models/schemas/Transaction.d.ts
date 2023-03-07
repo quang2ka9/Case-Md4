@@ -23,11 +23,16 @@
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose" />
 /// <reference types="mongoose/types/inferschematype" />
-interface IWallet {
+interface ITransaction {
+    idUser: string;
     nameWallet: string;
-    money: number;
+    moneyTrade: number;
+    status: string;
+    nameCategory: string;
+    desc: string;
+    timeTrade: Date;
 }
-declare const Wallet: import("mongoose").Model<IWallet, {}, {}, {}, import("mongoose").Document<unknown, {}, IWallet> & Omit<IWallet & {
+declare const Transaction: import("mongoose").Model<ITransaction, {}, {}, {}, import("mongoose").Document<unknown, {}, ITransaction> & Omit<ITransaction & {
     _id: import("mongoose").Types.ObjectId;
 }, never>, any>;
-export { Wallet };
+export default Transaction;
