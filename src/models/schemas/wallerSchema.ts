@@ -1,16 +1,16 @@
-import { Schema, model } from "mongoose";
+import {Schema, model} from "mongoose";
 
-interface IWallet {
-    idUser: string,
-    walletName: string,
-    totalMoneyLeft: number,
+interface IProduct{
+    name: string;
+    money: number
 }
-const walletSchema = new Schema<IWallet>({
-    idUser: String,
-    walletName: String,
-    totalMoneyLeft: Number,
+
+const productSchema = new Schema<IProduct>({
+    name: String,
+    money: Number
+
 })
 
-const Wallet = model<IWallet>('Wallet', walletSchema);
+const Product = model<IProduct>('Product', productSchema);
 
-export default Wallet;
+export {Product};

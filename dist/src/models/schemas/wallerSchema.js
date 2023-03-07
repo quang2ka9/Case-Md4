@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Product = void 0;
 const mongoose_1 = require("mongoose");
-const walletSchema = new mongoose_1.Schema({
-    idUser: String,
-    walletName: String,
-    totalMoneyLeft: Number,
+const productSchema = new mongoose_1.Schema({
+    name: String,
+    money: Number
 });
-const Wallet = (0, mongoose_1.model)('Wallet', walletSchema);
-exports.default = Wallet;
+const Product = (0, mongoose_1.model)('Product', productSchema);
+exports.Product = Product;
 //# sourceMappingURL=wallerSchema.js.map

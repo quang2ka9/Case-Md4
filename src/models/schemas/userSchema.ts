@@ -23,6 +23,6 @@ const userSchema = new Schema<IUser>({
     role: String
 })
 
-const UserModel = model<IUser>('User', userSchema);
+const UserModel = model<IUser>('UserModel', userSchema);
 
 export { UserModel };
